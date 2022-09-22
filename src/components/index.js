@@ -1,4 +1,5 @@
 export * from './NavBar'
-export * from './Form';
-export * from './Alertt';
+export * from './Alertt'
+export * from './Form'
+export * from './SongLyrics'
 export * from './Layout';

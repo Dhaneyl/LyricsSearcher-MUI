@@ -1,10 +1,12 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
+
+import {useLyrics, useSongState, useSubmit} from "../hooks"
 import { Layout } from "./Layout";
-import {useSongState, useSubmit} from "../hooks"
 
 export const Form = ({children}) => {
- const {search, handleSearch} = useSongState()
+//  const {search, handleSearch} = useSongState()
+  const {search, handleSearch} = useLyrics()
  const {artist, song} = search;
  const {handleSubmit} = useSubmit()
   return (
@@ -24,22 +26,25 @@ export const Form = ({children}) => {
           >
             <Grid item xs={12} md={3} sx={{ width: { xs: 250 } }}>
               <TextField
-                label="song"
+                label="artist"
+                name="artist"
                 size="small"
                 type="text"
-                placeholder="write your song's name"
-                
+                placeholder="write the artist's name"
+                value={artist}
                 onChange={handleSearch}
+                
                fullWidth
               />
             </Grid>
             <Grid item xs={12} md={3} sx={{ width: { xs: 250 } }}>
               <TextField
-                label="artist"
+                 label="song"
+                name="song"
                 size="small"
                 type="text"
-                placeholder="write the artist's name"
-                
+                placeholder="write the song's name"
+                value={song}
                 onChange={handleSearch}
                 
                 
@@ -56,7 +61,7 @@ export const Form = ({children}) => {
             </Grid>
           </Grid>
         </form>
-        {children}
+        <Typography sx={{mb:3}}>{children}</Typography>
       </Layout>
     </>
   );

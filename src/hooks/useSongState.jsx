@@ -5,16 +5,18 @@ export const useSongState = () => {
     artist: '',
     song: '',
   });
-
-  const handleSearch = ({ target }) => {
+  
+  const handleSearch = ({target}) => {
+    // debugger
     const { name, value } = target;
     setsearch({
       ...search,
-      [name]: value,
+      [name]: value
     });
   };
   return {
     search,
+    setsearch,
     handleSearch,
   };
 };
